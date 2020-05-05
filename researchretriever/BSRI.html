@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+		<link rel="stylesheet" href="style.css" type="text/css" media="all">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+  
+    <title>BSRI</title>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   
+    <script>
+        var firebaseConfig = {
+    apiKey: "AIzaSyBmPpTZSQPvsFvJWPxliMdEXcgS7dM9yvI",
+    authDomain: "daedatabase-39962.firebaseapp.com",
+    databaseURL: "https://daedatabase-39962.firebaseio.com",
+    projectId: "daedatabase-39962",
+    storageBucket: "daedatabase-39962.appspot.com",
+    messagingSenderId: "464133380390",
+    appId: "1:464133380390:web:662b500b178678129789e7", measurementId: "G-0HQFMDZLRE"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+    </script>
+
+	
+	
+
+</head>
+
+
+
+<body>
+  
+  <br>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+  <h4 style="text-align: center;"><span style="color: #800000;">Member's Info- Members(BSRI)</span></h4> 
+  <div style="overflow-x:auto;">
+    <table border="1" table rules="all" style="width:100%" id="myTable">
+      <tr id="tr">
+        <th>Name</th>
+        <th>Service ID</th>
+        <th>Batch/ Joining Year</th>
+        <th>Designation</th> <th>Organisation</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Posting Place</th>
+		<th>Posting District</th>
+        <th>Home Adress</th> <th>DOB</th>
+        <th>Blood Group</th>
+        <th>Emergency Contact</th>
+      </tr>
+    </table></div><br><p><u><i><a href="https://www.fb.com/gentletouch24"> Developer: Omar Faruk</a></i></u></p>
+	
+
+    <script>
+      var database = firebase.database();
+      database.ref('research').orderByChild('organisation').equalTo('BSRI').once('value', function(snapshot) {
+        if (snapshot.exists()) {
+          var content = '';
+          snapshot.forEach(function(data) {
+            var val = data.val();
+            content += '<tr>';
+            content += '<td>' + val.name + '</td>';
+            content += '<td>' + val.cadreid + '</td>';
+            content += '<td>' + val.cadre + '</td>';
+            content += '<td>' + val.designation + '</td>';content += '<td>' + val.organisation + '</td>';
+            content += '<td>' + val.phone + '</td>';            
+            content += '<td>' + val.email + '</td>';            
+			content += '<td>' + val.office + '</td>';
+			content += '<td>' + val.district + '</td>';
+            content += '<td>' + val.address + '</td>'; content += '<td>' + val.dob + '</td>';
+            content += '<td>' + val.bloodgroup + '</td>';
+            content += '<td>' + val.econtact + '</td>';
+            content += '</tr>';
+          });
+          $('#myTable').append(content);
+        }
+      });
+    </script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		
+		<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+	</body>
+</html>
+	
+	
+	
+	
+	
+	
