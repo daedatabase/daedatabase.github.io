@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Sweet Alert JavaScript -->
+    <script src="../js/sweetalert2.js"></script>
+    <!-- Nunito Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+    <title>Sign Up | Smart Krishi Diary</title>
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row mx-1">
+            <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 text-center mt-5 pb-4 text-warning">
+                <h1 class="h4">Registration to Smart Krishi Diary</h1>
+            </div>
+            <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 bg-white shadow mb-5 border border-warning">
+                <div class="row">
+                    
+                    <div class="col-lg-6 col-md-6 p-lg-5 p-md-5 px-3 py-4">
+                        <div id="signUpForm">
+                            <h2 class="h2 text-center text-dark mb-3">Sign Up</h2>
+                            <div class="form-group">
+                                <label for="name">Full name<span class="text-danger ml-1">*</span></label>
+                                <input type="text" class="form-control" id="name" onblur="checkname()" placeholder="Type your name...">
+                            </div>
+                            <div class="form-group">
+                                <label for="cadreid">Service Id<span class="text-danger ml-1">*</span></label>
+                                <input type="number" class="form-control" id="cadreid" onblur="checkcadreid()" placeholder="Service ID">
+                            </div>
+                             <div class="form-group">
+                                <label for="organisation">Organisation<span class="text-danger ml-1">*</span></label><br>
+                                <input list="inst" name="inst" id="organisation" onblur="checkorganisation()" placeholder="organisation">
+                            </div>
+                             <div class="form-group">
+                                <label for="cadre">Joining Batch/Year<span class="text-danger ml-1">*</span></label><br>
+								<input list="batch" name="batch" id="cadre" placeholder="Select Your Batch">
+										
+										</div>
+								<div class="form-group">
+                                <label for="phone">Mobile Number<span class="text-danger ml-1">*</span></label><br>
+                                <input type="text" class="form-control" id="phone" onblur="checkphone()" placeholder="01770007177">
+									</div>
+								<div class="form-group">
+                                <label for="bloodgroup">Blood Group<span class="text-danger ml-1">*</span></label><br>
+								<input list="bgro" name="bgro" id="bloodgroup" onblur="checkbloodgroup()" placeholder="Select Blood group">
+										
+										</div>
+									<div class="form-group">
+                                <label for="division">Posting Division<span class="text-danger ml-1">*</span></label><br>
+								<input list="div" name="div" id="division" onblur="checkdivision()" placeholder="Select Division">
+										
+										</div>
+								<div class="form-group">
+                                <label for="district">Posting District<span class="text-danger ml-1">*</span></label><br>
+								<input list="dist" name="dist" id="district" placeholder="Select District">
+									  
+										</div>
+                          
+                            <div class="form-group">
+                                <label for="designation">Designation<span class="text-danger ml-1">*</span></label>
+                                <input type="text" class="form-control" id="designation" onblur="checkdesignation()" placeholder="Sub Assistant Agriculture Officer">
+                                <!--<small id="designationError" class="form-text text-danger">Field must be filled.</small>-->
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="econtact">Emergrncy Contact<span class="text-danger ml-1">*</span></label>
+                                <input type="number" class="form-control" id="econtact" onblur="checkphone()" placeholder="01770007177">
+                                <!--<small id="designationError" class="form-text text-danger">Field must be filled.</small>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth<span class="text-danger ml-1">*</span></label>
+                                <input type="text" class="form-control" id="dob" onblur="checkdob()" placeholder="26/09/1988">
+                                <!--<small id="designationError" class="form-text text-danger">Field must be filled.</small>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="office">Office Address<span class="text-danger ml-1">*</span></label>
+                                <input type="text" class="form-control" id="office" onblur="checkoffice()" placeholder="DAE, Kaliganj, Lalmonirhat">
+                                <!--<small id="officeError" class="form-text text-danger">Field must be filled.</small>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Permanent Address<span class="text-danger ml-1">*</span></label>
+                                <input type="text" class="form-control" id="address" onblur="checkaddress()" placeholder="Mithapukur, Rangpur">
+                                <!--<small id="officeError" class="form-text text-danger">Field must be filled.</small>-->
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email address<span class="text-danger ml-1">*</span></label>
+                                <input type="email" class="form-control" id="email" onblur="checkemail()" placeholder="name@example.com">
+                                <!--small id="emailError" class="form-text text-danger">Please enter a valid email.</small-->
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password<span class="text-danger ml-1">*</span></label>
+                                <input type="password" class="form-control" id="password" onblur="checkpassword()" placeholder="Password">
+                                <small id="passwordError" class="form-text text-danger">Use 6 or more characters.</small>
+                            </div>
+                            <button type="button" class="btn btn-primary text-uppercase mb-3" onclick="signUp()">Sign Up</button>
+                            <p>Already have an account? Click here: <a href="../index.html"><strong class="text-warning text-uppercase showSignInForm">Sign In</strong></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	<!--list for selection-->
+	
+								<datalist id="batch">
+									  <option value="1980">
+									  <option value="1981">
+									  <option value="1982">
+									  <option value="1983">
+									  <option value="1984">
+									  <option value="1985">
+									  <option value="1986">
+									  <option value="1987">
+									  <option value="1988">
+									  <option value="1989">
+									  <option value="1990">
+									  <option value="1991">
+									  <option value="1992">
+									  <option value="1993">
+									  <option value="1994">
+									  <option value="1995">
+									  <option value="1996">
+									  <option value="1997">
+									  <option value="1998">
+									  <option value="1999">
+									  <option value="2000">
+									  <option value="2001">
+									  <option value="2002">
+									  <option value="2003">
+									  <option value="2004">
+									  <option value="2005">
+									  <option value="2006">
+									  <option value="2007">
+									  <option value="2008">
+									  <option value="2009">
+									  <option value="2010">
+									  <option value="2011">
+									  <option value="2012">
+									  <option value="2013">
+									  <option value="2014">
+									  <option value="2015">
+									  <option value="2016">
+									  <option value="2017">
+									  <option value="2018">
+									  <option value="2019">
+									  <option value="2020">
+									  <option value="2021">
+									  <option value="2022">
+										</datalist>
+								<datalist id="dist">
+									  <option value="Head Office">
+									  <option value="Bagerhat">
+									  <option value="Barguna">
+									  <option value="Bandarban">
+									  <option value="Barishal">
+									  <option value="Bhola">
+									  <option value="Bogura">
+									  <option value="Brahmanbaria">
+									  <option value="Chandpur">
+									  <option value="Chapainawabganj">
+									  <option value="Chattogram">
+									  <option value="Chuadanga">
+									  <option value="Cox's Bazar">
+									  <option value="Cumilla">
+									  <option value="Dhaka">
+									  <option value="Dinajpur">
+									  <option value="Faridpur">
+									  <option value="Feni">
+									  <option value="Gaibandha">
+									  <option value="Gazipur">
+									  <option value="Gopalganj">
+									  <option value="Habiganj">
+									  <option value="Jamalpur">
+									  <option value="Jashore">
+									  <option value="Jhalokati">
+									  <option value="Jhenaidah">
+									  <option value="Joypurhat">
+									  <option value="Khagrachhari">
+									  <option value="Khulna">
+									  <option value="Kishoreganj">
+									  <option value="Kurigram">
+									  <option value="Kushtia">
+									  <option value="Lakshmipur">
+									  <option value="Lalmonirhat">
+									  <option value="Madaripur">
+									  <option value="Magura">
+									  <option value="Manikganj">
+									  <option value="Meherpur">
+									  <option value="Moulavibazar">
+									  <option value="Munshiganj">
+									  <option value="Mymensingh">
+									  <option value="Naogaon">
+									  <option value="Narail">
+									  <option value="Narayanganj">
+									  <option value="Narshingdi">
+									  <option value="Natore">
+									  <option value="Netrokona">
+									  <option value="Nilphamari">
+									  <option value="Noakhali">
+									  <option value="Pabna">
+									  <option value="Panchagarh">
+									  <option value="Patuakhali">
+									  <option value="Pirojpur">
+									  <option value="Rajbari">
+									  <option value="Rajshahi">
+									  <option value="Rangamati">
+									  <option value="Rangpur">
+									  <option value="Satkhira">
+									  <option value="Shariatpur">
+									  <option value="Sherpur">
+									  <option value="Sirajganj">
+									  <option value="Sunamganj">
+									  <option value="Sylhet">
+									  <option value="Tangail">
+									  <option value="Thakurgaon">
+
+										</datalist>
+										
+										
+										<datalist id="div">
+									  <option value="Barishal">
+									  <option value="Chattogram">
+									  <option value="Dhaka">
+									  <option value="Khulna">
+									  <option value="Mymensingh">
+									  <option value="Rajshahi">
+									  <option value="Rangpur">
+									  <option value="Sylhet">
+										</datalist>
+										
+											
+									  <datalist id="inst">
+									  <option value="BADC">
+									  <option value="BARC">
+									  <option value="BARI">
+									  <option value="BINA">
+									  <option value="BRRI">
+									  <option value="BJRI">
+									  <option value="BSRI">
+									  <option value="CDB">
+									  <option value="NARS">
+									  <option value="BMDA">
+									  <option value="BIRTAN">
+									  <option value="BWMRI">
+									  <option value="HORTEX">
+									  <option value="Others">
+										</datalist>
+											
+										<datalist id="bgro">
+									  <option value="A+">
+									  <option value="A-">
+									  <option value="B+">
+									  <option value="B-">
+									  <option value="O+">
+									  <option value="O-">
+									  <option value="AB+">
+									  <option value="AB-">
+										</datalist>
+										
+										
+										<!--ends data list-->
+	
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBmPpTZSQPvsFvJWPxliMdEXcgS7dM9yvI",
+    authDomain: "daedatabase-39962.firebaseapp.com",
+    databaseURL: "https://daedatabase-39962.firebaseio.com",
+    projectId: "daedatabase-39962",
+    storageBucket: "daedatabase-39962.appspot.com",
+    messagingSenderId: "464133380390",
+    appId: "1:464133380390:web:662b500b178678129789e7",
+    measurementId: "G-0HQFMDZLRE"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+    </script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/app.js"></script>
+
+</body>
+</html>
