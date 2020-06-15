@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nilphamari-Sadar</title>
+    <link rel="stylesheet" href="../style.css" type="text/css" media="all">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+
+<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width , initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+  
+  
+  
+    <title>Members' Information</title>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   
+    <script>
+        var firebaseConfig = {
+    apiKey: "AIzaSyBmPpTZSQPvsFvJWPxliMdEXcgS7dM9yvI",
+    authDomain: "daedatabase-39962.firebaseapp.com",
+    databaseURL: "https://daedatabase-39962.firebaseio.com",
+    projectId: "daedatabase-39962",
+    storageBucket: "daedatabase-39962.appspot.com",
+    messagingSenderId: "464133380390",
+    appId: "1:464133380390:web:662b500b178678129789e7", measurementId: "G-0HQFMDZLRE"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+
+</head>
+<body>
+
+<div class="myhtml">
+    <ul class="nav">
+        <!--<li><a href="#">Home</a></li>-->
+        <li><a href="#">Rangpur</a>
+            <ul class="subs">
+                <li><a href="../BarishalDiv.html">Barishal</a></li>    <li><a href="../ChattogramDiv.html">Chattogram</a></li>
+    <li><a href="../DhakaDiv.html">Dhaka</a></li>    
+	<li><a href="../KhulnaDiv.html">Khulna</a></li>
+    <li><a href="../MymensinghDiv.html">Mymensingh</a></li>
+    <li><a href="../RajshahiDiv.html">Rajshahi</a></li>
+    <li><a href="../RangpurDiv.html">Rangpur</a></li>
+    <li><a href="../SylhetDiv.html">Sylhet</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Nilphamari</a>
+            <ul class="subs">
+	 <li><a href="Dinajpur.html">Dinajpur</a></li>
+    <li><a href="Gaibandha.html">Gaibandha</a></li>
+    <li><a href="Kurigram.html">Kurigram</a></li>    
+	<li><a href="Lalmonirhat.html">Lalmonirhat</a></li>
+	<li><a href="Nilphamari.html">Nilphamari</a></li>
+	<li><a href="Panchagarh.html">Panchagarh</a></li>
+	<li><a href="Rangpur.html">Rangpur</a></li>
+	<li><a href="Thakurgaon.html">Thakurgaon</a></li>
+	
+            </ul>
+        </li>
+		
+		<li><a href="#">Nilphamari-Sadar</a>
+            <ul class="subs">
+              
+	
+	 <li><a href="Dimla.html">Dimla</a></li>
+    <li><a href="Domar.html">Domar</a></li>
+    <li><a href="Jaldhaka.html">Jaldhaka</a></li>
+    <li><a href="Kishorganj.html">Kishorganj</a></li>
+    <li><a href="Sadar-Nilphamari.html">Sadar</a></li>
+    <li><a href="Syedpur.html">Syedpur</a></li>
+    
+	
+	
+	
+	
+	
+	
+	
+            </ul>
+        </li>
+		
+		
+        
+    </ul>
+    <div style="clear:both"></div>
+</div>
+
+
+
+
+
+<br>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+  <h4 style="text-align: center;"><span style="color: #800000;">Member's Info</span></h4> 
+  <div style="overflow-x:auto;">
+    <table border="1" table rules="all" style="width:100%" id="myTable">
+      <tr id="tr">
+        <th>Name</th>
+        <th>Cadre ID</th>
+        <th>Cadre</th>
+        <th>Designation</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Posting Place</th>
+		
+        <th>Home Adress</th> <th>DOB</th>
+        <th>Blood Group</th>
+        <th>Emergency Contact</th>
+      </tr>
+    </table></div><br><p><u><i><a href="https://www.fb.com/gentletouch24"> Developer: Omar Faruk</a></i></u></p>
+	
+
+    <script>
+      var database = firebase.database();
+      database.ref('member').orderByChild('upazila').equalTo('Nilphamari-Sadar').once('value', function(snapshot) {
+        if (snapshot.exists()) {
+          var content = '';
+          snapshot.forEach(function(data) {
+            var val = data.val();
+            content += '<tr>';
+            content += '<td>' + val.name + '</td>';
+            content += '<td>' + val.cadreid + '</td>';
+            content += '<td>' + val.cadre + '</td>';
+            content += '<td>' + val.designation + '</td>';
+            content += '<td>' + val.phone + '</td>';            
+            content += '<td>' + val.email + '</td>';            
+			content += '<td>' + val.organisation + ', ' + val.upazila + ', '+ val.district + '</td>';
+			
+            content += '<td>' + val.address + '</td>'; content += '<td>' + val.dob + '</td>';
+            content += '<td>' + val.bloodgroup + '</td>';
+            content += '<td>' + val.econtact + '</td>';
+            content += '</tr>';
+          });
+          $('#myTable').append(content);
+        }
+      });
+    </script>
+	
+	<script>
+      var database = firebase.database();
+      database.ref('saao').orderByChild('upazila').equalTo('Nilphamari-Sadar').once('value', function(snapshot) {
+        if (snapshot.exists()) {
+          var content = '';
+          snapshot.forEach(function(data) {
+            var val = data.val();
+            content += '<tr>';
+            content += '<td>' + val.name + '</td>';
+            content += '<td>' + val.cadreid + '</td>';
+            content += '<td>' + val.cadre + '</td>';
+            content += '<td>' + val.designation + '</td>';
+            content += '<td>' + val.phone + '</td>';            
+            content += '<td>' + val.email + '</td>';            
+			content += '<td>' + val.organisation + ', ' + val.upazila + ', '+ val.district + '</td>';
+			
+            content += '<td>' + val.address + '</td>'; content += '<td>' + val.dob + '</td>';
+            content += '<td>' + val.bloodgroup + '</td>';
+            content += '<td>' + val.econtact + '</td>';
+            content += '</tr>';
+          });
+          $('#myTable').append(content);
+        }
+      });
+    </script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		
+		<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
+
+
+</body>
+</html>
